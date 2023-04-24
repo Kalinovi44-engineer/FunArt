@@ -128,7 +128,7 @@ input#myLoad::placeholder {
  width: 94%;
  box-shadow: none;
 }
-@media (max-width: 767px){
+@media (max-width: 1300px){
 .container {
   width: 100%;
 }
