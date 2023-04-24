@@ -147,3 +147,14 @@ input#myLoad::placeholder {
   box-shadow: none;
   padding: 5px 0 0 0;
 }
+.active{
+  transition: background-color 0.6s ease;
+}
+.active:hover {
+  background-color: #cccccc;
+  transition: none;
+}
+.active:active {
+  background-color: #26e0e0;
+  transition: none;
+}
