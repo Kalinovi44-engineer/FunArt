@@ -60,7 +60,10 @@ body {
   background-color: #f5f6f7;
   display: flex;
   justify-content: center;
-  padding: 1rem 2rem;
+}
+
+#myCanvas{
+    width: 100%;
 }
 
 .container {
@@ -70,7 +73,7 @@ body {
   box-shadow: $shadow;
   background-color: #f5f6f7;
   box-shadow: -4px -2px 4px 0px #ffffff, 4px 2px 6px 0px #DFE4EA;
-
+  padding: 30px 0 0 0;
 }
 nav {
   display: flex;
@@ -124,4 +127,8 @@ input#myLoad::placeholder {
 .number{
  width: 94%;
  box-shadow: none;
+}
+@media (max-width: 767px){
+.container {
+  width: 100%;
 }
