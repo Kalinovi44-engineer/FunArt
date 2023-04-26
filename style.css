@@ -1,0 +1,268 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+:root {
+  --primary-color: #686b6d;
+  --input-color: #dee2dc;
+  --bgc: #202b3b;
+  --btn-color: #fc8b0a;
+  --btn-active-color: #eaecec;
+  --btn-hover-color: #fa2020;
+  --shadow-property: -4px -2px 4px 0px #211f30, 4px 2px 6px 0px #171727;
+  --text-btn-color: #212a33;
+  --text-input-color: #212a33;
+  --placeholder-color: #52687e;
+  --main-number:#fff;
+  --side-numbers: #aaa;
+  --filling-circle: #fc8b0a;
+}
+
+body {
+  font-family: 'Sofia Sans Semi', sans-serif;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.container {
+  height: auto;
+  width: 500px;
+  background-color: var(--bgc);
+  box-shadow: var(--shadow-property);
+}
+
+#myCanvas {
+  position: relative;
+  width: 95%;
+  left: 2.5%;
+
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 5px;
+}
+
+button {
+  height: 50px;
+  width: 47%;
+  margin: 2%;
+  background-color: var(--btn-color);
+  border-radius: 10px;
+  box-shadow: var(--shadow-property);
+  font-size: 20px;
+}
+
+
+.active {
+  transition: background-color 0.5s ease;
+  color: var(--text-btn-color);
+}
+
+.active:hover {
+  background-color: var(--btn-hover-color);
+  transition: background-color 0.5s ease;
+}
+
+.active:active {
+  background-color: var(--btn-active-color);
+  transition: background-color 0.1s ease;
+}
+
+input {
+  height: 50px;
+  margin: 2%;
+  background-color: var(--input-color);
+  border-radius: 10px;
+  font-size: 20px;
+  box-shadow: var(--shadow-property);
+}
+
+/* Задаем размер шрифта для placeholder */
+input#myLoad::placeholder {
+  left: 10px;
+  font-size: 15px;
+  color: var(--placeholder-color);
+  padding-left: 10px;
+}
+
+.range {
+  display: flex;
+  justify-content: space-between;
+}
+
+.key {
+  width: 80%;
+  color: var(--text-input-color);
+}
+
+.goto {
+  width: 30%;
+  color: var(--text-input-color);
+}
+
+.load-key {
+  width: 20%;
+}
+
+.goto-btn {
+  width: 30%;
+}
+
+.show-menu-find {
+  width: 30%;
+  height: 50px;
+  margin: 2%;
+  z-index: 201;
+}
+
+
+.find-pos-float {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  top: 20px;
+  left: -50%;
+  background-color: var(--bgc);
+  transform: translate(-50%, 0%);
+  z-index: 200;
+  padding: 1%;
+  transition: left 1s ease;
+  box-shadow: var(--shadow-property);
+}
+.find-pos-float p{
+  color: var(--side-numbers);
+}
+
+#findCondition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.range-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6%;
+}
+
+.number {
+  width: 94%;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    padding: 5px 0 0 0;
+  }
+
+  .active {
+    transition: background-color 0.5s ease;
+  }
+
+  .active:hover {
+    background-color: var(--btn-hover-color);
+    transition: none;
+  }
+
+  .active:active {
+    background-color: var(--btn-active-color);
+    transition: none;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
