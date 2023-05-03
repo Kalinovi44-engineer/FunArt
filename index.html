@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Righteous&family=Sofia+Sans+Semi+Condensed:ital,wght@0,400;1,200&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <title>FunArts</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="decrept">
+      <button class="open-player active" id="open-player" onclick="openPlayer()"><i class="fas fa-music"></i></button>
+      <input class="key" id="myLoad" type="text" placeholder="Введите ключ"
+        value="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">
+      <button class="load-key active" id="load-key" onclick="loadData()"><i class="fas fa-key"></i></button>
+    </nav>
+    <div class="player" id="player">
+      <div class="audio-preview">
+        <p></p>
+      </div>
+      <nav>
+        <div>
+          <p>Предыдущая<br>песня</p>
+          <button class="btn-player  active" onclick="prevSong()"><i class="fas fa-backward"></i></button>
+        </div>
+        <div>
+          <p>Плей/<br> Пауза</p>
+          <button class="btn-player  active" id="btn-play" onclick="playMusic()"><i class="fas fa-play"></i></button>
+        </div>
+        <div>
+          <p>Следующая<br>песня</p>
+          <button class="btn-player  active" onclick="nextSong()"><i class="fas fa-forward"></i></button>
+        </div>
+        <div>
+          <p>Вкл/Выкл<br>голос</p>
+          <button class="btn-player  active" id="btn-mute-voice" onclick="muteVoice()"><i
+              class="fas fa-music"></i></button>
+        </div>
+      </nav>
+    </div>
+    <div>
+      <canvas id="myCanvas" width="300" height="140"></canvas>
+    </div>
+    <nav>
+      <button onclick="btnPrev()" id="btn-prev" disabled><i class="fas fa-backward"></i></button>
+      <button onclick="btnNext()" id="btn-next" disabled><i class="fas fa-forward"></i></button>
+    </nav>
+    <div class="range">
+      <div class="range-num">
+        <p>5</p>
+      </div>
+      <input type="range" min="1" max="10" value="5" class="number">
+    </div>
+    <nav>
+      <button onclick="btnStart()" id="btn-start" disabled><i class="fas fa-play"></i></button>
+      <button onclick="btnStop()" id="btn-stop" disabled><i class="fas fa-stop"></i></button>
+    </nav>
+    <div class="find-pos-float" id="find-pos-float">
+      <p>Для нахождения позиции необходимо выполнить следующие пункты:<br>
+        1) Написать номер позиции на которой остановились.</p>
+      <input type="text" id="inpFind1">
+      <p>2) Размотать до предыдущей позиции, записать её</p>
+      <input type="text" id="inpFind2">
+      <p>3) Повторить пункт 2 еще раз</p>
+      <input type="text" id="inpFind3">
+      <p>4) Нажать кнопку поиска позиции.</p>
+      <nav>
+        <button id="findPosition" onclick="findPosition()" class="active">Поиск позиции</button>
+        <div id="findCondition">
+          <p></p>
+        </div>
+      </nav>
+      <p>5) Если позиция найдена можно к ней перейти нажав на соответствующую кнопку</p>
+      <button id="goToFoundPos" onclick="goToFoundPos()" disabled>Перейти к позиции</button>
+    </div>
+    <nav>
+      <button class="show-menu-find" id="show-menu-find" onclick="openMenuFindPos()" disabled><i
+          class="fas fa-crosshairs"></i></button>
+      <button class="goto-btn" onclick="goto()" id="btn-goto" disabled><i class="fas fa-arrow-right"></i></button>
+      <input class="goto" id="gotoInput" type="text" placeholder="Перейти к позиции" disabled>
+    </nav>
+    <!--<div>
+      <audio src="sound/songs/sound2.mp3" controls></audio>
+      <button onclick="playMusic()">play</button>
+    </div>-->
+    <!--<nav>
+      <button class="show-menu-find" id="show-menu-find" onclick="openMenuFindPos()" disabled><i
+          class="fas fa-crosshairs"></i></button>
+      <button class="goto-btn" onclick="goto()" id="btn-goto" disabled><i class="fas fa-arrow-right"></i></button>
+      <input class="goto" id="gotoInput" type="text" disabled>
+    </nav>-->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

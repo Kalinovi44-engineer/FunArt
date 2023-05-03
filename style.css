@@ -1,0 +1,306 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+:root {
+  --primary-color: #000;
+  --input-color: #1b242d;
+  --bgc: #1b242d;
+  --btn-color: linear-gradient(to bottom, #716cfc, #5854e6);
+  --btn-active-color: #f4f8fb;
+  --btn-hover-color: linear-gradient(to top, #716cfc, #5854e6);;
+  --shadow-property: none;
+  --text-btn-color: #f4f8fb;
+  --text-input-color: #f4f8fb;
+  --placeholder-color: #6f7686;
+  --main-number:#f4f8fb;
+  --side-numbers: #6f7686;
+  --filling-circle: #605dea;
+}
+
+body {
+  font-family: 'Sofia Sans Semi', sans-serif;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.container {
+  height: auto;
+  width: 500px;
+  background-color: var(--bgc);
+  box-shadow: var(--shadow-property);
+}
+
+#myCanvas {
+  position: relative;
+  width: 95%;
+  left: 2.5%;
+
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 5px;
+}
+
+button {
+  height: 50px;
+  width: 47%;
+  background: var(--btn-color);
+  border-radius: 10px;
+  margin: 5px;
+  box-shadow: var(--shadow-property);
+  font-size: 18px;
+}
+
+
+.active {
+  transition: background-color 0.5s ease;
+  color: var(--text-btn-color);
+}
+
+.active:hover {
+  background: var(--btn-hover-color);
+  transition: background-color 0.5s ease;
+}
+
+.active:active {
+  background-color: var(--btn-active-color);
+  transition: background-color 0.1s ease;
+}
+
+input {
+  height: 50px;
+  background-color: var(--input-color);
+  border: 1px solid var(--placeholder-color);
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 5px;
+  color: var(--text-input-color);
+  box-shadow: var(--shadow-property);
+}
+
+/* Задаем размер шрифта для placeholder */
+input#myLoad::placeholder, input#gotoInput::placeholder{
+  left: 10px;
+  font-size: 12px;
+  color: var(--placeholder-color);
+  padding-left: 10px;
+}
+
+.range {
+  display: flex;
+  justify-content: space-between;
+}
+
+.key {
+  width: 65%;
+}
+
+.goto {
+  width: 30%;
+}
+
+.load-key {
+  width: 15%;
+}
+
+.goto-btn {
+  width: 30%;
+}
+
+.show-menu-find {
+  width: 30%;
+  height: 50px;
+  z-index: 201;
+}
+
+.open-player{
+  width: 15%;
+}
+
+.player{
+  position: absolute;
+  background-color: var(--bgc);
+  transform: translate(-50%, 0%);
+  border: 1px solid var(--placeholder-color);
+  border-radius: 10px;
+  transition: left .5s ease;
+  box-shadow: var(--shadow-property);
+  background-color: var(--bgc);
+  padding-top: 10px;
+  z-index: 199;
+  width: 350px;
+  height:auto;
+  top: -100%;
+  left: 55%;
+  transition: top .5s ease;
+  box-shadow: var(--shadow-property);
+}
+.player div{
+  font-size: 10px;
+  color: var(--side-numbers);
+  text-align: center;
+}
+
+.btn-player{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.find-pos-float {
+  position: absolute;
+  width: 500px;
+  height: 100vh;
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  top: 0px;
+  left: -50%;
+  background-color: var(--bgc);
+  transform: translate(-50%, 0%);
+  z-index: 200;
+  transition: left .5s ease;
+  box-shadow: var(--shadow-property);
+}
+.find-pos-float p{
+  color: var(--text-btn-color);
+}
+
+#findCondition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.range-num {
+  display: flex;
+  color: var(--side-numbers);
+  justify-content: center;
+  align-items: center;
+  width: 6%;
+}
+
+.number {
+  width: 94%;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    padding: 5px 0 0 0;
+  }
+
+  .active {
+    transition: background-color 0.5s ease;
+  }
+
+  .active:hover {
+    background-color: var(--btn-hover-color);
+    transition: none;
+  }
+
+  .active:active {
+    background-color: var(--btn-active-color);
+    transition: none;
+  }
+
+  button {
+    font-size: 16px;
+  }
+  .find-pos-float {
+    width: 100%;
+  }
+}
