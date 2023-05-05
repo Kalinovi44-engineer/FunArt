@@ -3,6 +3,8 @@ var context = canvas.getContext("2d");
 
 let range = document.querySelector('.number');
 let rangeNum = document.querySelector('.range-num');
+let volumeMelody = document.querySelector('.volumeMelody');
+let volumeVoice = document.querySelector('.volumeVoice');
 let startsFlag = 0;
 
 var timer;
@@ -35,9 +37,23 @@ function muteVoice() {
 
 function playVoice(index) {
     let audio = new Audio('sound/voice/ua-w-' + index + '.mp3');
-    audio.volume = statusMuteVoice;
-    audio.play();
+    if (statusMuteVoice == 1) {
+        audio.volume = volumeVoice.value * 0.1;
+        audio.play();
+    }
 }
+
+document.getElementById("gotoInput").addEventListener("input", function () {
+    if (document.getElementById("gotoInput").value.length > 0) {
+
+        document.getElementById("finding").querySelector("i").classList.remove("fa-crosshairs");
+        document.getElementById("finding").querySelector("i").classList.add("fa-arrow-right");
+    } else {
+        document.getElementById("finding").querySelector("i").classList.remove("fa-arrow-right");
+        document.getElementById("finding").querySelector("i").classList.add("fa-crosshairs");
+
+    }
+});
 
 let numberSong = 1;
 let playbackStatus = 0;
@@ -49,7 +65,7 @@ let song = new Audio('sound/songs/' + numberSong + '.mp3');
 
 function playMusic() {
     if (playbackStatus == 0) {
-        song.volume = 0.1;
+        song.volume = volumeMelody.value * 0.1;
         song.play();
         playbackStatus = 1;
         document.getElementById("btn-play").style.color = "#00ff00";
@@ -63,19 +79,24 @@ function playMusic() {
         document.getElementById("btn-play").querySelector("i").classList.add("fa-play");
     }
 }
+volumeMelody.addEventListener("input", function () {
+    if (playbackStatus == 1) {
+        song.volume = volumeMelody.value * 0.1;
+        song.play();
+    }
+});
 
 function nextSong() {
     song.pause();
     playbackStatus = 0;
     if (numberSong < numberOfSongs) {
         numberSong++;
-
     } else {
         numberSong = 1;
     }
     console.log(numberSong);
     song = new Audio('sound/songs/' + numberSong + '.mp3');
-    song.volume = 0.1;
+    song.volume = volumeMelody.value;
     song.play();
     playbackStatus = 1;
     document.getElementById("btn-play").style.color = "#00ff00";
@@ -92,7 +113,6 @@ function prevSong() {
     } else {
         numberSong = numberOfSongs;
     }
-    console.log(numberSong);
     song = new Audio('sound/songs/' + numberSong + '.mp3');
     song.volume = 0.2;
     song.play();
@@ -137,7 +157,7 @@ context.fillText("Введите ключ для запуска программ
 range.oninput = function () {
     btnStop();
     rangeNum.innerHTML = this.value;
-}
+};
 
 function btnNext() {
     if (currentTextIndex < textArray.length - 1) {
@@ -171,7 +191,7 @@ function btnNext() {
         context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--side-numbers');
         context.fillText(textArray[nextTextIndex], 250, canvas.height / 2);
     }
-}
+};
 function btnPrev() {
     if (currentTextIndex > 0) {
         currentTextIndex--;
@@ -211,7 +231,11 @@ function btnStart() {
             var time = range.value * 1000;
             timer = setInterval(btnNext, time);
             document.getElementById("btn-start").style.color = "#00ff00";
+            document.getElementById("btn-start").querySelector("i").classList.remove("fa-play");
+            document.getElementById("btn-start").querySelector("i").classList.add("fa-pause");
         }
+    } else {
+        btnStop();
     }
 }
 
@@ -219,6 +243,8 @@ function btnStop() {
     startsFlag = 0;
     clearInterval(timer);
     document.getElementById("btn-start").style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-btn-color');
+    document.getElementById("btn-start").querySelector("i").classList.remove("fa-pause");
+    document.getElementById("btn-start").querySelector("i").classList.add("fa-play");
 }
 // Описываем загрузку кода и парсинг его в массив
 function loadData() {
@@ -242,17 +268,13 @@ function loadData() {
         document.getElementById("load-key").querySelector("i").classList.add("fa-check");
         document.getElementById("btn-start").disabled = false;
         document.getElementById("btn-start").classList.add("active");
-        document.getElementById("btn-stop").classList.add("active");
         document.getElementById("btn-next").classList.add("active");
         document.getElementById("btn-prev").classList.add("active");
-        document.getElementById("btn-goto").classList.add("active");
-        document.getElementById("btn-stop").disabled = false;
+        document.getElementById("finding").classList.add("active");
+        document.getElementById("finding").disabled = false;
         document.getElementById("btn-next").disabled = false;
         document.getElementById("btn-prev").disabled = false;
-        document.getElementById("btn-goto").disabled = false;
         document.getElementById("gotoInput").disabled = false;
-        document.getElementById("show-menu-find").disabled = false;
-        document.getElementById("show-menu-find").classList.add("active");
     } else {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.font = "28px Arial";
@@ -290,7 +312,6 @@ function openPlayer() {
     }
 }
 
-
 let leftPositionMenu = 0;
 function openMenuFindPos() {
     btnStop();
@@ -300,6 +321,22 @@ function openMenuFindPos() {
     } else {
         document.getElementById("find-pos-float").style.left = "-50%";
         leftPositionMenu = 0;
+    }
+}
+
+function finding() {
+    if (document.getElementById("gotoInput").value != "") {
+        goto();
+        document.getElementById("finding").querySelector("i").classList.remove("fa-arrow-right");
+        document.getElementById("finding").querySelector("i").classList.add("fa-crosshairs");
+    } else {
+        openMenuFindPos();
+        if (leftPositionMenu == 0) {
+            document.getElementById("gotoInput").disabled = false;
+        } else {
+            document.getElementById("gotoInput").disabled = true;
+        }
+
     }
 }
 
@@ -336,33 +373,27 @@ function goToFoundPos() {
 // Нажатие на клавишу 'Пробел'
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
-        if(startsFlag == 0){
-            btnStart();
-            startsFlag = 1;
-        } else {
-            btnStop();
-            startsFlag = 0;
-        }        
+        btnStart();
     }
-  });
+});
 
-  // Нажатие на клавишу 'Стрелка вправо'
+// Нажатие на клавишу 'Стрелка вправо'
 document.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowRight') {
         btnNext();
     }
 });
-  // Нажатие на клавишу 'Стрелка влево'
-  document.addEventListener('keydown', (event) => {
+// Нажатие на клавишу 'Стрелка влево'
+document.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowLeft') {
         btnPrev();
     }
 });
-  // Нажатие на клавишу 'Стрелка вверх'
-  document.addEventListener('keydown', (event) => {
+// Нажатие на клавишу 'Стрелка вверх'
+document.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowUp') {
         btnStop();
-        range.value ++;
+        range.value++;
         rangeNum.innerHTML = range.value;
         btnStart();
     }
@@ -371,8 +402,15 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowDown') {
         btnStop();
-        range.value --;
+        range.value--;
         rangeNum.innerHTML = range.value;
         btnStart();
     }
+});
+
+let toggleButton = document.querySelector("#theme-toggle");
+
+toggleButton.addEventListener("click", function () {
+    const rootElement = document.querySelector(":root");
+    rootElement.classList.toggle("dark-theme");
 });
