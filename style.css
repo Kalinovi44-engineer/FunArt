@@ -92,14 +92,30 @@ h6 {
   --bgc: #1b242d;
   --btn-color: linear-gradient(to bottom, #716cfc, #5854e6);
   --btn-active-color: #f4f8fb;
-  --btn-hover-color: linear-gradient(to top, #716cfc, #5854e6);;
+  --btn-hover-color: linear-gradient(to top, #716cfc, #5854e6);
   --shadow-property: none;
   --text-btn-color: #f4f8fb;
   --text-input-color: #f4f8fb;
   --placeholder-color: #6f7686;
-  --main-number:#f4f8fb;
+  --main-number: #f4f8fb;
   --side-numbers: #6f7686;
   --filling-circle: #605dea;
+}
+
+:root.dark-theme {
+  --primary-color: #fff;
+  --input-color: #858d94;
+  --bgc: #518cc7;
+  --btn-color: linear-gradient(to bottom, #f7772e, #fad400);
+  --btn-active-color: #161616;
+  --btn-hover-color: linear-gradient(to top, #1b17f3, #f7772e);
+  --shadow-property: none;
+  --text-btn-color: #1414db;
+  --text-input-color: #0c0c0c;
+  --placeholder-color: #444546;
+  --main-number: #053f6b;
+  --side-numbers: #0138b8;
+  --filling-circle: #1b17f3;
 }
 
 body {
@@ -121,7 +137,6 @@ body {
   position: relative;
   width: 95%;
   left: 2.5%;
-
 }
 
 nav {
@@ -131,7 +146,7 @@ nav {
 }
 
 button {
-  height: 50px;
+  height: 70px;
   width: 47%;
   background: var(--btn-color);
   border-radius: 10px;
@@ -139,7 +154,6 @@ button {
   box-shadow: var(--shadow-property);
   font-size: 18px;
 }
-
 
 .active {
   transition: background-color 0.5s ease;
@@ -156,11 +170,15 @@ button {
   transition: background-color 0.1s ease;
 }
 
-input {
+.decrept button {
   height: 50px;
+}
+
+input {
   background-color: var(--input-color);
   border: 1px solid var(--placeholder-color);
   border-radius: 10px;
+  height: 70px;
   font-size: 16px;
   margin: 5px;
   color: var(--text-input-color);
@@ -168,11 +186,11 @@ input {
 }
 
 /* Задаем размер шрифта для placeholder */
-input#myLoad::placeholder, input#gotoInput::placeholder{
+input#myLoad::placeholder,
+input#gotoInput::placeholder {
   left: 10px;
   font-size: 12px;
   color: var(--placeholder-color);
-  padding-left: 10px;
 }
 
 .range {
@@ -182,31 +200,19 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
 
 .key {
   width: 65%;
-}
-
-.goto {
-  width: 30%;
+  height: 50px;
+  padding-left: 10px;
 }
 
 .load-key {
   width: 15%;
 }
 
-.goto-btn {
-  width: 30%;
-}
-
-.show-menu-find {
-  width: 30%;
-  height: 50px;
-  z-index: 201;
-}
-
-.open-player{
+.open-player {
   width: 15%;
 }
 
-.player{
+.player {
   position: absolute;
   background-color: var(--bgc);
   transform: translate(-50%, 0%);
@@ -218,19 +224,20 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
   padding-top: 10px;
   z-index: 199;
   width: 350px;
-  height:auto;
+  height: auto;
   top: -100%;
   left: 55%;
   transition: top .5s ease;
   box-shadow: var(--shadow-property);
 }
-.player div{
+
+.player div {
   font-size: 10px;
   color: var(--side-numbers);
   text-align: center;
 }
 
-.btn-player{
+.btn-player {
   width: 50px;
   height: 50px;
   border-radius: 100%;
@@ -251,8 +258,14 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
   transition: left .5s ease;
   box-shadow: var(--shadow-property);
 }
-.find-pos-float p{
+
+.find-pos-float p {
   color: var(--text-btn-color);
+}
+
+.find-pos-float input {
+  height: 40px;
+  width: 47%;
 }
 
 #findCondition {
@@ -260,6 +273,11 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
   justify-content: center;
   align-items: center;
   width: 50%;
+}
+
+.goto {
+  width: 49%;
+  padding-left: 10px;
 }
 
 .range-num {
@@ -273,6 +291,34 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
 .number {
   width: 94%;
   box-shadow: none;
+  height: 50px;
+}
+
+.sliderPlayer nav span {
+  width: 100%;
+}
+
+.volumeMelody,
+.volumeVoice {
+  width: 92%;
+  height: 30px;
+  margin: 0;
+}
+
+.nav-footer {
+  position: fixed;
+  bottom: 3px;
+  width: 500px;
+  z-index: 200;
+}
+
+.nav-footer button,
+.nav-footer input {
+  height: 50px;
+}
+
+.finding {
+  z-index: 201;
 }
 
 @media (max-width: 768px) {
@@ -281,6 +327,10 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
     height: auto;
     box-shadow: none;
     padding: 5px 0 0 0;
+  }
+
+  .nav-footer {
+    width: 100%;
   }
 
   .active {
@@ -300,6 +350,7 @@ input#myLoad::placeholder, input#gotoInput::placeholder{
   button {
     font-size: 16px;
   }
+
   .find-pos-float {
     width: 100%;
   }
