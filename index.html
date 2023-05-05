@@ -47,15 +47,24 @@
           <button class="btn-player  active" id="btn-mute-voice" onclick="muteVoice()"><i
               class="fas fa-music"></i></button>
         </div>
+
       </nav>
+      <div class="sliderPlayer">
+        <nav>
+          <span>
+            <input type="range" min="0" max="10" value="5" class="volumeMelody">
+            <p>Громкость музыки</p>
+          </span>
+          <span>
+            <input type="range" min="0" max="10" value="5" class="volumeVoice">
+            <p>Громкость озвучки</p>
+          </span>
+        </nav>
+      </div>
     </div>
     <div>
       <canvas id="myCanvas" width="300" height="140"></canvas>
     </div>
-    <nav>
-      <button onclick="btnPrev()" id="btn-prev" disabled><i class="fas fa-backward"></i></button>
-      <button onclick="btnNext()" id="btn-next" disabled><i class="fas fa-forward"></i></button>
-    </nav>
     <div class="range">
       <div class="range-num">
         <p>5</p>
@@ -63,16 +72,19 @@
       <input type="range" min="1" max="10" value="5" class="number">
     </div>
     <nav>
+      <button onclick="btnPrev()" id="btn-prev" disabled><i class="fas fa-backward"></i></button>
       <button onclick="btnStart()" id="btn-start" disabled><i class="fas fa-play"></i></button>
-      <button onclick="btnStop()" id="btn-stop" disabled><i class="fas fa-stop"></i></button>
+      <button onclick="btnNext()" id="btn-next" disabled><i class="fas fa-forward"></i></button>
     </nav>
+
+
     <div class="find-pos-float" id="find-pos-float">
       <p>Для нахождения позиции необходимо выполнить следующие пункты:<br>
         1) Написать номер позиции на которой остановились.</p>
       <input type="text" id="inpFind1">
       <p>2) Размотать до предыдущей позиции, записать её</p>
       <input type="text" id="inpFind2">
-      <p>3) Повторить пункт 2 еще раз</p>
+      <p>3) Размотать до предыдущей позиции еще раз, записать её</p>
       <input type="text" id="inpFind3">
       <p>4) Нажать кнопку поиска позиции.</p>
       <nav>
@@ -84,22 +96,15 @@
       <p>5) Если позиция найдена можно к ней перейти нажав на соответствующую кнопку</p>
       <button id="goToFoundPos" onclick="goToFoundPos()" disabled>Перейти к позиции</button>
     </div>
-    <nav>
-      <button class="show-menu-find" id="show-menu-find" onclick="openMenuFindPos()" disabled><i
-          class="fas fa-crosshairs"></i></button>
-      <button class="goto-btn" onclick="goto()" id="btn-goto" disabled><i class="fas fa-arrow-right"></i></button>
+    <nav class="nav-footer">
+      <button class="finding" id="finding" onclick="finding()" disabled><i class="fas fa-crosshairs"></i></button>
+      <!--<button class="show-menu-find" id="show-menu-find" onclick="openMenuFindPos()" disabled><i class="fas fa-crosshairs"></i></button>
+      <button class="goto-btn" onclick="goto()" id="btn-goto" disabled><i class="fas fa-arrow-right"></i></button>-->
       <input class="goto" id="gotoInput" type="text" placeholder="Перейти к позиции" disabled>
+      <button id="theme-toggle">Дневная тема</button>
     </nav>
-    <!--<div>
-      <audio src="sound/songs/sound2.mp3" controls></audio>
-      <button onclick="playMusic()">play</button>
-    </div>-->
-    <!--<nav>
-      <button class="show-menu-find" id="show-menu-find" onclick="openMenuFindPos()" disabled><i
-          class="fas fa-crosshairs"></i></button>
-      <button class="goto-btn" onclick="goto()" id="btn-goto" disabled><i class="fas fa-arrow-right"></i></button>
-      <input class="goto" id="gotoInput" type="text" disabled>
-    </nav>-->
+
+
     <script src="script.js"></script>
 
 </body>
